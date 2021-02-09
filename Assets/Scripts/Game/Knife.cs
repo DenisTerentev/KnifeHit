@@ -6,6 +6,7 @@ public class Knife : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
     private bool _inWood = false;
+    [SerializeField] GameObject applePart;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,7 +28,10 @@ public class Knife : MonoBehaviour
         {
             Messenger.Broadcast(GameEvent.Knife_In_Apple);
             Destroy(other.gameObject);
-            //добавить анимацию разрыва яблока
+            Vector3 vect = new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z);
+            Instantiate(applePart, vect, Quaternion.identity);
+            vect = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
+            Instantiate(applePart, vect, Quaternion.identity);
         }
     }
 

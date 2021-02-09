@@ -26,6 +26,9 @@ public class SoundController : MonoBehaviour
         {
             Instantiate(knifeInWood, transform.position, Quaternion.identity);
             knife = false;
+            Vibration.Init();
+            Vibration.Vibrate();
+            Vibration.Cancel();
         }
     }
     void KnifeInKnife()
