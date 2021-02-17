@@ -20,5 +20,5 @@ public static class GameEvent
     public const string Change_Score = "CHANGE_SCORE";//передает на UI количество очков
     public const string Restart = "RESTART";//перезапуск игры
     public const string Difficult = "DIFFICULT";//сложность игры(разное вращение бревна
-   
+    public const string Apple_Start = "APPLE_START";//переход к начальным настройка яблока
 }

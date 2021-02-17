@@ -49,22 +49,18 @@ public class KnifePlace : MonoBehaviour
         
         if (knifeHit == startQuantity + startKnifeInWood)
         {
-            //print("knifeHit = " + knifeHit);
-            //print("StartKniweinWood= " + startKnifeInWood);
-            //print("StartQuantity= " + startQuantity);
-      
             knifeHit = 0;
             startKnifeInWood = 0;
             UIController.canThrow = false;
+            Messenger.Broadcast(GameEvent.Delete_Wood_Childs);
             StartCoroutine(NextLevel());
         }
     }
     private IEnumerator NextLevel()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         if (UIController.canThrow == false)
         {
-            //Messenger.Broadcast(GameEvent.Delete_Wood_Childs);//возможно лишнее
             Messenger.Broadcast(GameEvent.Next_Level);
         }
     }

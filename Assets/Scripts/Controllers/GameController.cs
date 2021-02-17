@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
         return applesScore;
     }
 
-    public void SendLevel()//добавить рассылку типа дерева
+    public void SendLevel()
     {
         Messenger<int>.Broadcast(GameEvent.Type_Of_Wood, levelController.levels[level].tipeOfWood);
         Messenger<int>.Broadcast(GameEvent.Level, level);
@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
         Messenger<int>.Broadcast(GameEvent.Change_Score, score);
         SendLevel();        
         Messenger.Broadcast(GameEvent.Restart);
+        SoundController.knife = false;
     }
     public void LevelNext()
     {
@@ -73,7 +74,6 @@ public class GameController : MonoBehaviour
     IEnumerator WaitLevelNext()
     {
         yield return new WaitForSeconds(1.1f);
-        Messenger.Broadcast(GameEvent.Delete_Wood_Childs);
         level++;
         SendLevel();
     }

@@ -142,3 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 50436308142645966}
+  applePart: {fileID: 3931660113793982027, guid: 539d2c0e8e5ef314aa50af9b707fe0f7,
+    type: 3}

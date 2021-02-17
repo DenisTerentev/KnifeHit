@@ -5,8 +5,12 @@ using UnityEngine;
 public class WoodSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] woods;
+    [SerializeField] GameObject[] parts;
     GameObject wood;
+    GameObject part;
     Animator anim;
+    int _numberWood;
+
     void Awake()
     {
         Messenger<int>.AddListener(GameEvent.Type_Of_Wood,AddWood);
@@ -22,6 +26,7 @@ public class WoodSpawner : MonoBehaviour
 
     void AddWood(int Wood)
     {
+        _numberWood = Wood;
         DeleteChilds();
         wood=Instantiate(woods[Wood], transform);
     }
@@ -39,7 +44,11 @@ public class WoodSpawner : MonoBehaviour
     }
     void DeleteWoodChilds()
     {
+        part=Instantiate(parts[_numberWood], transform);
+        part.transform.parent = null;
         wood.GetComponent<Wood>().DeleteChilds();
+        DeleteChilds();
+        Destroy(part, 1f);
     }
     void WoodShake()
     {

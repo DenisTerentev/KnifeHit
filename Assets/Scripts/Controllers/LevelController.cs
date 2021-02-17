@@ -8,7 +8,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public List<Level> levels;
-
+    [SerializeField] AppleChance chance;
 
     void Awake()
     {
@@ -36,12 +36,18 @@ public class LevelController : MonoBehaviour
     }
     Level ParseOrder(XmlNode node)
     {
+        int apple = 0;
+        
+        if (UnityEngine.Random.Range(1,(int)((1/(chance.appleChance/100f))+1))==1)
+        {
+            apple = 1;
+        }
         Level level = new Level(Int32.Parse(node.Attributes[0].InnerText),
+                                apple,
                                 Int32.Parse(node.Attributes[1].InnerText),
                                 Int32.Parse(node.Attributes[2].InnerText),
                                 Int32.Parse(node.Attributes[3].InnerText),
-                                Int32.Parse(node.Attributes[4].InnerText),
-                                Int32.Parse(node.Attributes[5].InnerText));
+                                Int32.Parse(node.Attributes[4].InnerText));
         return level ;
     }
     public void MessageLevel(int levelNumber)

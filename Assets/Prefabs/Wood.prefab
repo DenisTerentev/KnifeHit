@@ -94,9 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f6b0aadc46444a9031aa0fee59392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   knife: {fileID: 4788123541431058568, guid: 02c4c08a93173a246a6a64f3eb22f0ca, type: 3}
-  apple: {fileID: 7047911103545062202, guid: 7fccc345b6796064d8a991d62c95e2d4, type: 3}
+  apple: {fileID: 7047911103545062202, guid: e33e141e6dcad2a46b41aca3bec7beb2, type: 3}
+  woodRotationSound: {fileID: 7341860063811113255, guid: d0b7124451419794d8b7a803596cf34a,
+    type: 3}
 --- !u!58 &8629402706343032260
 CircleCollider2D:
   m_ObjectHideFlags: 0

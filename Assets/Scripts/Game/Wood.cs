@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour
 {
-    float speed=3;
+    float speed = 3;
     bool differentRotate = false;
     bool slowingDown = false;
     public GameObject knife;
     public GameObject apple;
     bool tern = false;
-
 
     void FixedUpdate()
     {
@@ -39,26 +38,24 @@ public class Wood : MonoBehaviour
                     if (speed >= 5) tern = !tern;
                 }
             }
-            //Quaternion to = Quaternion.EulerAngles(0, 0, speed);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, to, speed * Time.deltaTime);
         }
         transform.Rotate(0, 0, speed);
-        
+
     }
     public void ChuseDifficult(int difficult)
     {
-        if(difficult==1)
+        if (difficult == 1)
         {
             speed = 3;
             differentRotate = false;
             slowingDown = false;
         }
-        else if(difficult==2)
+        else if (difficult == 2)
         {
             speed = 5;
             slowingDown = true;
             differentRotate = false;
-            
+
         }
         else
         {
@@ -71,9 +68,12 @@ public class Wood : MonoBehaviour
 
     public void DeleteChilds()
     {
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
-            Destroy(child.gameObject);
+            child.GetComponent<Collider2D>().isTrigger = false;
+            child.transform.parent = null;
+            child.GetComponent<Rigidbody2D>().gravityScale = 1;
+            Destroy(child.gameObject, 0.7f);
         }
     }
 
@@ -82,18 +82,19 @@ public class Wood : MonoBehaviour
         float radius = this.GetComponent<CircleCollider2D>().radius;
         List<Vector3> vectors = new List<Vector3>();
 
-        if(knifes>0)
-            for (int i=0;i<knifes;i++)
-            { 
+        if (knifes > 0)
+            for (int i = 0; i < knifes; i++)
+            {
                 Vector3 vector = RandomCircle(transform.position, radius, vectors);
-                Instantiate(knife, vector, Quaternion.LookRotation(Vector3.forward,transform.position-vector));
+                Instantiate(knife, vector, Quaternion.LookRotation(Vector3.forward, transform.position - vector));
             }
 
-        if(apples>0)
-            for (int i=0;i<apples;i++)
+        if (apples > 0)
+            for (int i = 0; i < apples; i++)
             {
-                Vector3 vector = RandomCircle(transform.position, radius+0.3f, vectors);
-                Instantiate(apple, vector, Quaternion.LookRotation(Vector3.forward, vector-transform.position));
+                Vector3 vector = RandomCircle(transform.position, radius + 0.3f, vectors);
+                Instantiate(apple, vector, Quaternion.LookRotation(Vector3.forward, vector - transform.position));
+                Messenger.Broadcast(GameEvent.Apple_Start);
             }
     }
 
@@ -104,8 +105,8 @@ public class Wood : MonoBehaviour
         float angle = Random.value * 360;
         Vector3 newVector = new Vector3(radius * Mathf.Cos(angle * Mathf.Deg2Rad) + center.x,
                                      radius * Mathf.Sin(angle * Mathf.Deg2Rad) + center.y);
-        foreach(Vector3 vector in vectors)
-        {//если рядом с вектором ничего нет, делай ниже, если есть, то по новой
+        foreach (Vector3 vector in vectors)
+        {
             add = false;
             Vector3 check = vector - newVector;
             if (check.magnitude < 0.6f)
@@ -115,7 +116,7 @@ public class Wood : MonoBehaviour
             }
             else add = true;
         }
-        if(add) vectors.Add(newVector);
+        if (add) vectors.Add(newVector);
         return newVector;
     }
 }

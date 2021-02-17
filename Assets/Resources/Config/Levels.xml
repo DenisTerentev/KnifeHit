@@ -1,31 +1,92 @@
 <root>
   <level levelnumber = "0" 
-         appleQuantity="1" 
-         knifes="5" 
-         knifesInWood="2"
+         knifes="3" 
+         knifesInWood="1"
          typeOfWood ="0"
          difficult="1">   
 	</level>
   <level levelnumber = "1"
-       appleQuantity="2"
-       knifes="2"
+       knifes="6"
+       knifesInWood="2"
+       typeOfWood ="0"
+       difficult="1">
+  </level>
+  <level levelnumber = "2"
+       knifes="5"
+       knifesInWood="2"
+       typeOfWood ="0"
+       difficult="1">
+  </level>
+  <level levelnumber = "3"
+       knifes="4"
+       knifesInWood="3"
+       typeOfWood ="0"
+       difficult="2">
+  </level>
+  <level levelnumber = "4"
+      knifes="5"
+      knifesInWood="3"
+      typeOfWood ="1"
+      difficult="2">
+  </level>
+  <level levelnumber = "5"
+       knifes="3"
        knifesInWood="2"
        typeOfWood ="0"
        difficult="2">
   </level>
-  <level levelnumber = "2"
-       appleQuantity="3"
-       knifes="3"
-       knifesInWood="3"
+  <level levelnumber = "6"
+       knifes="6"
+       knifesInWood="2"
        typeOfWood ="1"
        difficult="2">
   </level>
-  <level levelnumber = "3"
-       appleQuantity="1"
-       knifes="7"
+  <level levelnumber = "7"
+       knifes="8"
+       knifesInWood="2"
+       typeOfWood ="0"
+       difficult="2">
+  </level>
+  <level levelnumber = "8"
+        knifes="5"
+        knifesInWood="3"
+        typeOfWood ="0"
+        difficult="2">
+  </level>
+  <level levelnumber = "9"
+       knifes="6"
        knifesInWood="3"
        typeOfWood ="2"
        difficult="3">
   </level>
-    
+  <level levelnumber = "10"
+       knifes="7"
+       knifesInWood="2"
+       typeOfWood ="0"
+       difficult="2">
+  </level>
+  <level levelnumber = "11"
+       knifes="5"
+       knifesInWood="2"
+       typeOfWood ="0"
+       difficult="3">
+  </level>
+  <level levelnumber = "12"
+        knifes="6"
+        knifesInWood="2"
+        typeOfWood ="0"
+        difficult="3">
+  </level>
+  <level levelnumber = "13"
+       knifes="5"
+       knifesInWood="3"
+       typeOfWood ="0"
+       difficult="3">
+  </level>
+  <level levelnumber = "14"
+       knifes="9"
+       knifesInWood="3"
+       typeOfWood ="2"
+       difficult="3">
+  </level>
 </root>

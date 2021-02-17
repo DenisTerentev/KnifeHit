@@ -48,7 +48,7 @@ public class UIController : MonoBehaviour
     {
         StartCoroutine(WaitForOpenGame());
         baner.GetComponent<Animator>().SetTrigger("BanerOut");
-    }//добавить карутин
+    }
     IEnumerator WaitForOpenGame()
     {
         yield return new WaitForSeconds(1);

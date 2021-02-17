@@ -8,13 +8,21 @@ public class SoundController : MonoBehaviour
     [SerializeField] GameObject knifeInWood;
     [SerializeField] GameObject knifeInKnife;
     [SerializeField] GameObject throwSound;
-    bool knife=false;
+    [SerializeField] GameObject mainMusic;
+    public static bool knife=false;
+
     void Awake()
     {
         Messenger.AddListener(GameEvent.Knifes_Throw, ThrowSound);
         Messenger.AddListener(GameEvent.Knife_Dont_Match_Sound, KnifeInKnife);
         Messenger.AddListener(GameEvent.Knife_Hit, KnifeInWood);
-        
+        Messenger.AddListener(GameEvent.Next_Level, Win);
+        Vibration.Init();
+
+    }
+    void Start()
+    {
+        Instantiate(mainMusic, transform);
     }
     public void ButtonClick()
     {
@@ -26,12 +34,18 @@ public class SoundController : MonoBehaviour
         {
             Instantiate(knifeInWood, transform.position, Quaternion.identity);
             knife = false;
+            Vibration.VibratePeek();                    
         }
+    }
+    void Win()
+    {
+        Vibration.Vibrate();
     }
     void KnifeInKnife()
     {
         knife = true;
         Instantiate(knifeInKnife, transform.position, Quaternion.identity);
+        Vibration.Vibrate();
     }
     void ThrowSound()
     {
@@ -42,5 +56,7 @@ public class SoundController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.Knifes_Throw, ThrowSound);
         Messenger.RemoveListener(GameEvent.Knife_Hit, KnifeInWood);
         Messenger.RemoveListener(GameEvent.Knife_Dont_Match_Sound, KnifeInKnife);
+        Messenger.RemoveListener(GameEvent.Next_Level, Win);
+        Vibration.Cancel();
     }
 }
